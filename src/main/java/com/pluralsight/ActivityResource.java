@@ -48,8 +48,7 @@ public class ActivityResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Activity createActivityParams(MultivaluedMap<String, String> formParams) {
 		Activity activity = new Activity();
-		System.out.print(formParams.getFirst("description"));
-		System.out.println(formParams.getFirst("duration"));
+
 		activity.setDescription(formParams.getFirst("description"));
 		activity.setDuration(Integer.parseInt(formParams.getFirst("duration")));
 		
