@@ -56,4 +56,13 @@ public class ActivityResource {
 		
 		return activity;
 	}
+	
+	@POST
+	@Path("activity")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public Activity createActivity(Activity activity) {
+		activityRepository.create(activity);
+		return activity;
+	}
 }
