@@ -11,6 +11,7 @@ import lombok.Setter;
 @XmlRootElement
 public class Activity {
 	
+	private @NonNull String id;
 	private @NonNull String description;
 	private @NonNull int duration;
 }
