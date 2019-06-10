@@ -14,4 +14,5 @@ public class Activity {
 	private @NonNull String id;
 	private @NonNull String description;
 	private @NonNull int duration;
+	private @NonNull User user;
 }

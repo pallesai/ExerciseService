@@ -9,6 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.pluralsight.model.Activity;
+import com.pluralsight.model.User;
 import com.pluralsight.repository.ActivityRepository;
 import com.pluralsight.repository.ActivityRepositoryStub;
 
@@ -28,5 +29,14 @@ public class ActivityResource {
 	@Path("{activityId}")
 	public Activity getActivity(@PathParam ("activityId") String activityId) {
 		return activityRepository.findActivity(activityId);
+	}
+	
+	@GET
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Path("{activityId}/user")
+	public User getActivityUser(@PathParam ("activityId") String activityId) {
+		
+		Activity activity = activityRepository.findActivity(activityId);
+		return activity.getUser();
 	}
 }

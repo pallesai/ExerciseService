@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pluralsight.model.Activity;
+import com.pluralsight.model.User;
 
 public class ActivityRepositoryStub implements ActivityRepository {
 
@@ -30,9 +31,17 @@ public class ActivityRepositoryStub implements ActivityRepository {
 	@Override
 	public Activity findActivity(String activityId) {
 		Activity activity1 = new Activity();
+		User user = new User();
+		
+		user.setName("Krishna");
+		user.setId("12345678");
+		
 		activity1.setId("1234");
 		activity1.setDescription("Swimming");
 		activity1.setDuration(5);
+		activity1.setUser(user);
+		
+		
 		
 		return activity1;
 	}
