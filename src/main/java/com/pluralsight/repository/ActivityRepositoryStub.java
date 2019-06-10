@@ -41,8 +41,11 @@ public class ActivityRepositoryStub implements ActivityRepository {
 		activity1.setDuration(5);
 		activity1.setUser(user);
 		
-		
-		
 		return activity1;
+	}
+
+	@Override
+	public void create(Activity activity) {
+		// have an insert into the DB
 	}
 }
