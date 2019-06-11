@@ -2,6 +2,8 @@ package com.pluralsight.client;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import com.pluralsight.model.Activity;
@@ -15,6 +17,15 @@ public class ActivityClientTest {
 		Activity activity = client.get("1234");
 		
 		assertNotNull(activity);
+	}
+	
+	@Test
+	public void testGetList() {
+		ActivityClient client = new ActivityClient();
+		
+		List<Activity> responses = client.get();
+		
+		assertNotNull(responses);
 	}
 
 }
