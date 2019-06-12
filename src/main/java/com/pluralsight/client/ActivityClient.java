@@ -7,6 +7,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.pluralsight.model.Activity;
 
@@ -21,9 +22,13 @@ public class ActivityClient {
 	public Activity get(String id) {
 		WebTarget target= client.target("http://localhost:8080/ExerciseService/webapi/");
 		
-		Activity activity = target.path("activities/" + id).request(MediaType.APPLICATION_JSON).get(Activity.class);
+		Response response = target.path("activities/" + id).request(MediaType.APPLICATION_JSON).get(Response.class);
 		
-		return activity;
+		if(response.getStatus() != 200) {
+			throw new RuntimeException(response.getStatus() + ": server on the error");
+		}
+		
+		return response.readEntity(Activity.class);
 	}
 	
 	public List<Activity> get() {
