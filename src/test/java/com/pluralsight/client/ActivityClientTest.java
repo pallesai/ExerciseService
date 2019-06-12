@@ -27,5 +27,11 @@ public class ActivityClientTest {
 		
 		assertNotNull(responses);
 	}
+	
+	@Test(expected=RuntimeException.class)
+	public void testGetWithBadRequest() {
+		ActivityClient client = new ActivityClient();
+		client.get("34");
+	}
 
 }

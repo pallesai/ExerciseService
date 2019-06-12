@@ -35,13 +35,13 @@ public class ActivityResource {
 	public Response getActivity(@PathParam ("activityId") String activityId) {
 		
 		if(activityId == null || activityId.length() < 4) {
-			Response.status(Status.BAD_REQUEST).build();
+			return Response.status(Status.BAD_REQUEST).build();
 		}
 		
 		Activity activity = activityRepository.findActivity(activityId);
 		
 		if(activity == null) {
-			Response.status(Status.NOT_FOUND).build();
+			return Response.status(Status.NOT_FOUND).build();
 		}
 		
 		return Response.ok().entity(activity).build();
