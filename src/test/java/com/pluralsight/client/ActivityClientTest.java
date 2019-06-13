@@ -46,5 +46,26 @@ public class ActivityClientTest {
 		
 		assertNotNull(activity);
 	}
+	
+	@Test
+	public void testPut() {
+		ActivityClient client = new ActivityClient();
+		Activity activity = new Activity();
+		
+		activity.setId("4567");
+		activity.setDescription("Running activity description");
+		activity.setDuration(10);
+		
+		activity = client.update(activity);
+		
+		assertNotNull(activity);
+	}
+	
+	@Test
+	public void testDelete() {
+		ActivityClient client = new ActivityClient();
+		
+		client.delete("1234");
+	}
 
 }

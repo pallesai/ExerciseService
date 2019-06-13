@@ -54,4 +54,30 @@ public class ActivityClient {
 		
 		return response.readEntity(Activity.class);
 	}
+
+	public Activity update(Activity activity) {
+		WebTarget target= client.target("http://localhost:8080/ExerciseService/webapi/");
+		
+		Response response = target.path("activities/" + activity.getId())
+				.request(MediaType.APPLICATION_JSON)
+				.put(Entity.entity(activity, MediaType.APPLICATION_JSON));
+		
+		if(response.getStatus() != 200) {
+			throw new RuntimeException(response.getStatus() + ": server on the error");
+		}
+		
+		return response.readEntity(Activity.class);
+		
+	}
+
+	public void delete(String activityId) {
+		WebTarget target= client.target("http://localhost:8080/ExerciseService/webapi/");
+		
+		Response response = target.path("activities/" + activityId)
+				.request(MediaType.APPLICATION_JSON).delete();
+		
+		if(response.getStatus() != 200) {
+			throw new RuntimeException(response.getStatus() + ": server on the error");
+		}
+	}
 }

@@ -48,4 +48,15 @@ public class ActivityRepositoryStub implements ActivityRepository {
 	public void create(Activity activity) {
 		// have an insert into the DB
 	}
+	
+	@Override
+	public Activity update(Activity activity) {
+		// have an insert into the DB
+		return activity;
+	}
+	
+	@Override
+	public void delete(String activityId) {
+		// delete the activity based on Id
+	}
 }
