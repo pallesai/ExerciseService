@@ -2,6 +2,7 @@ package com.pluralsight.client;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -66,6 +67,23 @@ public class ActivityClientTest {
 		ActivityClient client = new ActivityClient();
 		
 		client.delete("1234");
+	}
+	
+	@Test
+	public void testSearch() {
+		ActivitySearchClient client = new ActivitySearchClient();
+		
+		String param = "descriptions";
+		List<String> searchValues = new ArrayList<String>();
+		
+		searchValues.add("Swimming");
+		searchValues.add("Running");
+		searchValues.add("Jogging");
+		
+		List<Activity> activities = client.search(param, searchValues);
+		System.out.println(activities);
+		
+		assertNotNull(activities);
 	}
 
 }
